@@ -17,13 +17,13 @@ class Books extends Component {
     // this.loadBooks();
   }
 
-  loadBooks = () => {
-    API.getBooks()
-      .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-      )
-      .catch(err => console.log(err));
-  };
+  // loadBooks = () => {
+  //   API.getBooks()
+  //     .then(res =>
+  //       this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
   saveBook = id => {
     API.saveBook(id)
@@ -47,7 +47,9 @@ class Books extends Component {
         .then(res => {
           console.log(res);
           this.setState({books:res.data.items})
-          this.loadBooks()})
+          console.log(this.state.books);
+          // this.loadBooks()
+        })
         .catch(err => console.log(err));
     }
   };
@@ -56,7 +58,7 @@ class Books extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-6">
+          <Col size="md-12">
             <Jumbotron>
               <h1>Book Search</h1>
             </Jumbotron>
@@ -74,20 +76,23 @@ class Books extends Component {
               </FormBtn>
             </form>
           </Col>
-          <Col size="md-6 sm-12">
-            
-            <Jumbotron>
+          {/* <Col size="md-6 sm-12"> */}
+          {/* If you want search and results side by side cut the results stuff here */}
+          {/* </Col> */}
+        </Row>
+        {/* <Jumbotron>
               <h1>Results</h1>
-            </Jumbotron>
+            </Jumbotron> */}
             {this.state.books.length ? (
               <List>
                 {this.state.books.map((book, i) => (
                   <ListItem key={i}>
-                    <Link to={"/books/" + book._id}>
+                    <a target="_blank" href={book.volumeInfo.canonicalVolumeLink}>
+                    {console.log(book.volumeInfo.canonicalVolumeLink)}
                       <strong>
-                        {book.title} by {book.author}
+                        {book.volumeInfo.title} by {book.volumeInfo.authors}
                       </strong>
-                    </Link>
+                    </a>
                     <SaveBtn onClick={() => this.saveBook(book._id)} />
                   </ListItem>
                 ))}
@@ -95,8 +100,6 @@ class Books extends Component {
             ) : (
               <h3>Enter a book to get results</h3>
             )}
-          </Col>
-        </Row>
       </Container>
     );
   }
