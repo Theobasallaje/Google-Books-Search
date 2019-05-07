@@ -10,8 +10,6 @@ class Books extends Component {
   state = {
     books: [],
     title: "",
-    author: "",
-    synopsis: ""
   };
 
   componentDidMount() {
