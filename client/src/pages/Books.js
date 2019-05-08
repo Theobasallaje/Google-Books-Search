@@ -25,9 +25,9 @@ class Books extends Component {
   //     .catch(err => console.log(err));
   // };
 
-  saveBook = id => {
-    API.saveBook(id)
-      .then(res => this.loadBooks())
+  saveBook = book => {
+    API.saveBook(book)
+      .then()
       .catch(err => console.log(err));
   };
 
@@ -60,7 +60,7 @@ class Books extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron>
-              <h1>Book Search</h1>
+              <h1>Google Book Search</h1>
             </Jumbotron>
             <form>
               <Input
@@ -93,7 +93,7 @@ class Books extends Component {
                         {book.volumeInfo.title} by {book.volumeInfo.authors}
                       </strong>
                     </a>
-                    <SaveBtn onClick={() => this.saveBook(book._id)} />
+                    <SaveBtn onClick={() => this.saveBook(book.volumeInfo)} />
                   </ListItem>
                 ))}
               </List>
