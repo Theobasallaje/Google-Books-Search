@@ -90,7 +90,7 @@ class Books extends Component {
                     <a target="_blank" href={book.volumeInfo.canonicalVolumeLink}>
                     {console.log(book.volumeInfo.canonicalVolumeLink)}
                       <strong>
-                        {book.volumeInfo.title} by {book.volumeInfo.authors}
+                        {book.volumeInfo.title} by {book.volumeInfo.authors.join(", ")}
                       </strong>
                     </a>
                     <SaveBtn onClick={() => this.saveBook(book.volumeInfo)} />
@@ -98,7 +98,7 @@ class Books extends Component {
                 ))}
               </List>
             ) : (
-              <h3>Enter a book to get results</h3>
+              <h3 style={{textAlign: "center"}}>Enter a book to get results</h3>
             )}
       </Container>
     );
