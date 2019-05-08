@@ -19,36 +19,36 @@ class Books extends Component {
   loadBooks = () => {
     API.getBooks()
       .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+        this.setState({ books: res.data })
       )
       .catch(err => console.log(err));
   };
 
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  };
+  // deleteBook = id => {
+  //   API.deleteBook(id)
+  //     .then(res => this.loadBooks())
+  //     .catch(err => console.log(err));
+  // };
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
+  // handleInputChange = event => {
+  //   const { name, value } = event.target;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
-  };
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+  //   if (this.state.title && this.state.author) {
+  //     API.saveBook({
+  //       title: this.state.title,
+  //       author: this.state.author,
+  //       synopsis: this.state.synopsis
+  //     })
+  //       .then(res => this.loadBooks())
+  //       .catch(err => console.log(err));
+  //   }
+  // };
 
   render() {
     return (
@@ -60,14 +60,15 @@ class Books extends Component {
             </Jumbotron>
             {this.state.books.length ? (
               <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
+                {this.state.books.map((book, i) => (
+                  <ListItem key={i}>
+                    <a target="_blank" href={book.volumeInfo.canonicalVolumeLink}>
+                    {console.log(book.volumeInfo.canonicalVolumeLink)}
                       <strong>
-                        {book.title} by {book.author}
+                        {book.volumeInfo.title} by {book.volumeInfo.authors}
                       </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                    </a>
+                    {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
                   </ListItem>
                 ))}
               </List>
