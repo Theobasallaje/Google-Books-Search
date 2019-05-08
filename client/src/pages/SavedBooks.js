@@ -24,11 +24,11 @@ class Books extends Component {
       .catch(err => console.log(err));
   };
 
-  // deleteBook = id => {
-  //   API.deleteBook(id)
-  //     .then(res => this.loadBooks())
-  //     .catch(err => console.log(err));
-  // };
+  deleteBook = id => {
+    API.deleteBook(id)
+      .then(res => this.loadBooks())
+      .catch(err => console.log(err));
+  };
 
   // handleInputChange = event => {
   //   const { name, value } = event.target;
@@ -62,13 +62,13 @@ class Books extends Component {
               <List>
                 {this.state.books.map((book, i) => (
                   <ListItem key={i}>
-                    <a target="_blank" href={book.volumeInfo.canonicalVolumeLink}>
-                    {console.log(book.volumeInfo.canonicalVolumeLink)}
+                    <a target="_blank" href={book.canonicalVolumeLink}>
+                    {console.log(book.canonicalVolumeLink)}
                       <strong>
-                        {book.volumeInfo.title} by {book.volumeInfo.authors}
+                        {book.title} by {book.authors}
                       </strong>
                     </a>
-                    {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
+                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
                   </ListItem>
                 ))}
               </List>
