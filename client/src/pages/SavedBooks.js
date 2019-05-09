@@ -60,8 +60,10 @@ class Books extends Component {
             </Jumbotron>
             {this.state.books.length ? (
               <List>
-                {this.state.books.map((book, i) => (
-                  <ListItem key={i}>
+                {this.state.books.map((book, i) => {
+                  console.log(book)
+                  return (
+                    <ListItem key={i}>
                     <div style={{ textAlign: "center" }}>
                       <a target="_blank" href={book.canonicalVolumeLink}>
                         {console.log(book.canonicalVolumeLink)}
@@ -71,14 +73,18 @@ class Books extends Component {
                       </a>
                     </div>
                     <div style={{ textAlign: "center" }}>
-                      <img src={`${book.imageLinks[i].thumbnail}`}></img>
+                    {/* {book.volumeInfo.imageLinks === undefined ?  */}
+                      <img src={`${book.imageLinks[0].thumbnail}`}></img>
+                      {/* :null} */}
                     </div>
                     <div>
                       <p>{`${book.description}`}</p>
                     </div>
                     <DeleteBtn onClick={() => this.deleteBook(book._id)} />
                   </ListItem>
-                ))}
+                  )
+                  
+                })}
               </List>
             ) : (
                 <h3>No Results to Display</h3>

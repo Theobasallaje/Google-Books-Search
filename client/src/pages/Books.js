@@ -98,6 +98,9 @@ class Books extends Component {
                     </div>
                     <div style={{textAlign: "center"}}>
                     <img src={`${book.volumeInfo.imageLinks.thumbnail}`}></img>
+                    {/* {book.volumeInfo.imageLinks === undefined ? 
+                    <img src={`${book.volumeInfo.imageLinks.thumbnail}`}></img>
+                    : null} */}
                     </div>
                     <div>
                     <p>{`${book.volumeInfo.description}`}</p>
