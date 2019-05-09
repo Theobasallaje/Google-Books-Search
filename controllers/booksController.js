@@ -17,6 +17,13 @@ module.exports = {
   },
   create: function(req, res) {
     console.log(req.body)
+    // db.GoogleBooks
+    //   .then(dbModel => {
+    //   if .find(id = id)
+    //   else
+    //   run db.GoogleBooks.create
+    // }
+    //   .catch(err => res.status(422).json(err));
     db.GoogleBooks
       .create(req.body)
       .then(dbModel => res.json(dbModel))

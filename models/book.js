@@ -9,7 +9,8 @@ const bookSchema = new Schema({
     smallThumbnail: String,
     thumbnail: String
   }],
-  canonicalVolumeLink: String
+  canonicalVolumeLink: String,
+  id: String
 });
 
 const GoogleBooks = mongoose.model("Googlebooks", bookSchema);

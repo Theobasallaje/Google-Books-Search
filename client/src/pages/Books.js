@@ -27,7 +27,9 @@ class Books extends Component {
   // };
 
   saveBook = book => {
-    API.saveBook(book)
+    var newBook = book.volumeInfo;
+    newBook.id = book.id;
+    API.saveBook(newBook)
       .then()
       .catch(err => console.log(err));
   };
@@ -105,9 +107,17 @@ class Books extends Component {
                     <div>
                     <p>{`${book.volumeInfo.description}`}</p>
                     </div>
-                    <SaveBtn onClick={() => {
-                      this.saveBook(book.volumeInfo);
+                    <SaveBtn onClick={(event) => {
+                      this.saveBook(book);
                       this.setState({saved: true})
+                      // event.target.style.backgroundColor = "red";
+                      // event.target.classList[1] = "btn-danger";
+                      event.target.classList.add("btn-danger");
+                      event.target.innerHTML = "saved";
+                      // event.target.classList.add("btn-danger");
+                      console.log(event.target);
+                      console.log(event.target.style);
+                      console.log(event.target.classList);
                     }}
                       />
                   </ListItem>
