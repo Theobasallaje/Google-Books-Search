@@ -11,6 +11,7 @@ class Books extends Component {
   state = {
     books: [],
     title: "",
+    saved: false
   };
 
   componentDidMount() {
@@ -87,13 +88,25 @@ class Books extends Component {
               <List>
                 {this.state.books.map((book, i) => (
                   <ListItem key={i}>
+                    <div style={{textAlign: "center"}}>
                     <a target="_blank" href={book.volumeInfo.canonicalVolumeLink}>
                     {console.log(book.volumeInfo.canonicalVolumeLink)}
                       <strong>
                         {book.volumeInfo.title} by {book.volumeInfo.authors.join(", ")}
                       </strong>
                     </a>
-                    <SaveBtn onClick={() => this.saveBook(book.volumeInfo)} />
+                    </div>
+                    <div style={{textAlign: "center"}}>
+                    <img src={`${book.volumeInfo.imageLinks.thumbnail}`}></img>
+                    </div>
+                    <div>
+                    <p>{`${book.volumeInfo.description}`}</p>
+                    </div>
+                    <SaveBtn onClick={() => {
+                      this.saveBook(book.volumeInfo);
+                      this.setState({saved: true})
+                    }}
+                      />
                   </ListItem>
                 ))}
               </List>

@@ -5,9 +5,15 @@ import "./style.css";
 // That way we don't have to define them all individually
 function Deletebtn(props) {
   return (
-    <span className="delete-btn" {...props} role="button" tabIndex="0">
-      X
-    </span>
+    <div style={{ textAlign: "center" }}>
+      <span className="delete-btn justify-content-center" {...props} role="button" tabIndex="0">
+        <button style={{ marginBottom: 10 }} className="btn btn-danger">
+          Delete
+    </button>
+        {/* save   */}
+        {/* {this.opena ? 'Hide' : 'Show'} */}
+      </span>
+    </div>
   );
 }
 

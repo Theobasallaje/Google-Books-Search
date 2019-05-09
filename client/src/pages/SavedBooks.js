@@ -62,19 +62,27 @@ class Books extends Component {
               <List>
                 {this.state.books.map((book, i) => (
                   <ListItem key={i}>
-                    <a target="_blank" href={book.canonicalVolumeLink}>
-                    {console.log(book.canonicalVolumeLink)}
-                      <strong>
-                        {book.title} by {book.authors}
-                      </strong>
-                    </a>
+                    <div style={{ textAlign: "center" }}>
+                      <a target="_blank" href={book.canonicalVolumeLink}>
+                        {console.log(book.canonicalVolumeLink)}
+                        <strong>
+                          {book.title} by {book.authors}
+                        </strong>
+                      </a>
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                      <img src={`${book.imageLinks[i].thumbnail}`}></img>
+                    </div>
+                    <div>
+                      <p>{`${book.description}`}</p>
+                    </div>
                     <DeleteBtn onClick={() => this.deleteBook(book._id)} />
                   </ListItem>
                 ))}
               </List>
             ) : (
-              <h3>No Results to Display</h3>
-            )}
+                <h3>No Results to Display</h3>
+              )}
           </Col>
         </Row>
       </Container>

@@ -5,9 +5,15 @@ import "./style.css";
 // That way we don't have to define them all individually
 function SaveBtn(props) {
   return (
-    <span className="save-btn" {...props} role="button" tabIndex="0">
-      Save
-    </span>
+    <div style={{ textAlign: "center" }}>
+      <span className="save-btn justify-content-center" {...props} role="button" tabIndex="0">
+        <button style={{ marginBottom: 10 }} className="btn btn-success">
+          save
+    </button>
+        {/* save   */}
+        {/* {this.opena ? 'Hide' : 'Show'} */}
+      </span>
+    </div>
   );
 }
 
