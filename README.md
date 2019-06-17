@@ -3,6 +3,9 @@
 # Check it out
 https://google-book-search-theo.herokuapp.com/
 
+# Screenshots
+![Homepage](https://theobasallaje.github.io/portfolio/image/portfolio/google_books.jpg)
+
 # Installation Instructions
 
 ## Available Scripts
