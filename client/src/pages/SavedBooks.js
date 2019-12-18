@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 
@@ -65,7 +64,7 @@ class Books extends Component {
                   return (
                     <ListItem key={i}>
                     <div style={{ textAlign: "center" }}>
-                      <a target="_blank" href={book.canonicalVolumeLink}>
+                      <a target="_blank" rel="noopener noreferrer" href={book.canonicalVolumeLink}>
                         {console.log(book.canonicalVolumeLink)}
                         <strong>
                           {book.title} by {book.authors}
@@ -74,7 +73,10 @@ class Books extends Component {
                     </div>
                     <div style={{ textAlign: "center" }}>
                     {/* {book.volumeInfo.imageLinks === undefined ?  */}
-                      <img src={`${book.imageLinks[0].thumbnail}`}></img>
+                      <img 
+                        alt={book.imageLinks[0].thumbnail.length > 0 ? `image of ${book.volumeInfo.title} book`: 'No image found'} 
+                        src={`${book.imageLinks[0].thumbnail}`}
+                      />
                       {/* :null} */}
                     </div>
                     <div>
