@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import SaveBtn from "../components/SaveBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
@@ -91,7 +90,7 @@ class Books extends Component {
                 {this.state.books.map((book, i) => (
                   <ListItem key={i}>
                     <div style={{textAlign: "center"}}>
-                    <a target="_blank" href={book.volumeInfo.canonicalVolumeLink}>
+                    <a target="_blank" rel="noopener noreferrer" href={book.volumeInfo.canonicalVolumeLink}>
                     {console.log(book.volumeInfo.canonicalVolumeLink)}
                       <strong>
                         {book.volumeInfo.title} by {book.volumeInfo.authors.join(", ")}
@@ -99,7 +98,10 @@ class Books extends Component {
                     </a>
                     </div>
                     <div style={{textAlign: "center"}}>
-                    <img src={`${book.volumeInfo.imageLinks.thumbnail}`}></img>
+                    <img 
+                        alt={book.volumeInfo.imageLinks.thumbnail.length > 0 ? `image of ${book.volumeInfo.title} book`: 'No image found'} 
+                        src={`${book.volumeInfo.imageLinks.thumbnail}`}
+                    />
                     {/* {book.volumeInfo.imageLinks === undefined ? 
                     <img src={`${book.volumeInfo.imageLinks.thumbnail}`}></img>
                     : null} */}
@@ -115,9 +117,6 @@ class Books extends Component {
                       event.target.classList.add("btn-danger");
                       event.target.innerHTML = "saved";
                       // event.target.classList.add("btn-danger");
-                      console.log(event.target);
-                      console.log(event.target.style);
-                      console.log(event.target.classList);
                     }}
                       />
                   </ListItem>
