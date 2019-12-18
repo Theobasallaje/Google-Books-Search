@@ -10,6 +10,7 @@ function SaveBtn(props) {
         <button style={{ marginBottom: 10 }} className="btn btn-success">
           save
     </button>
+      {console.log(props)}
         {/* save   */}
         {/* {this.opena ? 'Hide' : 'Show'} */}
       </span>
