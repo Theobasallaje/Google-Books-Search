@@ -48,7 +48,7 @@ class Books extends Component {
       })
         .then(res => {
           console.log(res);
-          this.setState({books:res.data.items})
+          this.setState({ books: res.data.items })
           console.log(this.state.books);
           // this.loadBooks()
         })
@@ -85,46 +85,54 @@ class Books extends Component {
         {/* <Jumbotron>
               <h1>Results</h1>
             </Jumbotron> */}
-            {this.state.books.length ? (
-              <List>
-                {this.state.books.map((book, i) => (
-                  <ListItem key={i}>
-                    <div style={{textAlign: "center"}}>
-                    <a target="_blank" rel="noopener noreferrer" href={book.volumeInfo.canonicalVolumeLink}>
+        {this.state.books.length ? (
+          <List>
+            {this.state.books.map((book, i) => (
+              <ListItem key={i}>
+                <div style={{ textAlign: "center" }}>
+                  <a target="_blank" rel="noopener noreferrer" href={book.volumeInfo.canonicalVolumeLink}>
                     {console.log(book.volumeInfo.canonicalVolumeLink)}
-                      <strong>
-                        {book.volumeInfo.title} by {book.volumeInfo.authors.join(", ")}
-                      </strong>
-                    </a>
-                    </div>
-                    <div style={{textAlign: "center"}}>
-                    <img 
-                        alt={book.volumeInfo.imageLinks.thumbnail.length > 0 ? `image of ${book.volumeInfo.title} book`: 'No image found'} 
-                        src={`${book.volumeInfo.imageLinks.thumbnail}`}
-                    />
-                    {/* {book.volumeInfo.imageLinks === undefined ? 
+                    <strong>
+                      {/* {book.volumeInfo.title} by {book.volumeInfo.authors.join(", ")} */}
+                      {book.volumeInfo.title}
+                      {book.volumeInfo.authors === undefined ? ''
+                          : book.volumeInfo.authors.length < 1 ? ''
+                            : book.volumeInfo.authors.length > 1 ? ` by ${book.volumeInfo.authors.join(", ")}`
+                              : ` by ${book.volumeInfo.authors}`}
+                    </strong>
+                  </a>
+                </div>
+                <div style={{ textAlign: "center" }}>
+                  <img
+                    alt={book.volumeInfo.imageLinks.thumbnail.length > 0 ? `image of ${book.volumeInfo.title} book` : 'No image found'}
+                    src={`${book.volumeInfo.imageLinks.thumbnail}`}
+                  />
+                  {/* {book.volumeInfo.imageLinks === undefined ? 
                     <img src={`${book.volumeInfo.imageLinks.thumbnail}`}></img>
                     : null} */}
-                    </div>
-                    <div>
-                    <p>{`${book.volumeInfo.description}`}</p>
-                    </div>
-                    <SaveBtn onClick={(event) => {
-                      this.saveBook(book);
-                      this.setState({saved: true})
-                      // event.target.style.backgroundColor = "red";
-                      // event.target.classList[1] = "btn-danger";
-                      event.target.classList.add("btn-danger");
-                      event.target.innerHTML = "saved";
-                      // event.target.classList.add("btn-danger");
-                    }}
-                      />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3 style={{textAlign: "center"}}>Enter a book to get results</h3>
-            )}
+                </div>
+                <div>
+                  {book.volumeInfo.description === undefined ?
+                    ''
+                    : <p>{`${book.volumeInfo.description}`}</p>}
+                </div>
+
+                <SaveBtn onClick={(event) => {
+                  this.saveBook(book);
+                  this.setState({ saved: true })
+                  // event.target.style.backgroundColor = "red";
+                  // event.target.classList[1] = "btn-danger";
+                  event.target.classList.add("btn-danger");
+                  event.target.innerHTML = "saved";
+                  // event.target.classList.add("btn-danger");
+                }}
+                />
+              </ListItem>
+            ))}
+          </List>
+        ) : (
+            <h3 style={{ textAlign: "center" }}>Enter a book to get results</h3>
+          )}
       </Container>
     );
   }
