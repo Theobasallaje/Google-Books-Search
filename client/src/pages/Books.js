@@ -48,7 +48,7 @@ class Books extends Component {
       })
         .then(res => {
           console.log(res);
-          this.setState({ books: res.data.items })
+          this.setState({ books: res.data.items });
           console.log(this.state.books);
           // this.loadBooks()
         })
@@ -60,10 +60,11 @@ class Books extends Component {
     return (
       <>
         <div className="mt-0 mb-4">
-          <div class="flex">
-            <div class="w-1/5 h-12"></div>
-            <div class="w-3/5 h-12"><img src='/assets/google_play_books_image.png' alt='google play books image' /></div>
-            <div class="w-1/5 h-12"></div>
+          <div className='container'>
+            <img 
+              src="/assets/google_play_books_image.png"
+              alt="google play books image"
+            />
           </div>
           <form>
             <Input
@@ -73,10 +74,7 @@ class Books extends Component {
               name="title"
               placeholder="Title"
             />
-            <FormBtn
-              type="submit"
-              onClick={this.handleFormSubmit}
-            >
+            <FormBtn type="submit" onClick={this.handleFormSubmit}>
               Search
             </FormBtn>
           </form>
