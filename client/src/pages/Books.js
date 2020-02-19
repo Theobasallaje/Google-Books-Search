@@ -59,12 +59,12 @@ class Books extends Component {
   render() {
     return (
       <>
-        <div className="flex mb-4">
-          <Jumbotron>
-            <h1>Google Book Search</h1>
-          </Jumbotron>
-        </div>
         <div className="mt-0 mb-4">
+          <div class="flex">
+            <div class="w-1/5 h-12"></div>
+            <div class="w-3/5 h-12"><img src='/assets/google_play_books_image.png' alt='google play books image' /></div>
+            <div class="w-1/5 h-12"></div>
+          </div>
           <form>
             <Input
               type="search"
