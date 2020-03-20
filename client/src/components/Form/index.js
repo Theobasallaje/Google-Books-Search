@@ -22,7 +22,7 @@ export function FormBtn(props) {
   return (
     // <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
     <div style={{ textAlign: "center" }}>
-    <button {...props} style={{ marginBottom: 10 }} className="btn btn-success">
+    <button {...props} style={{ marginBottom: 10 }} className="searchButton mt-12">
       {props.children}
     </button>
     </div>

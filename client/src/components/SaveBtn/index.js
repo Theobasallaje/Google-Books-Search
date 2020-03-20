@@ -7,7 +7,7 @@ function SaveBtn(props) {
   return (
     <div style={{ textAlign: "center" }}>
       <span className="save-btn justify-content-center" {...props} role="button" tabIndex="0">
-        <button style={{ marginBottom: 10 }} className="btn btn-success">
+        <button style={{ marginBottom: 10 }} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
           save
     </button>
         {/* save   */}
